@@ -6,8 +6,6 @@ const currentRouter = require("./src/routes/current");
 
 const app = express();
 
-//Teste Heroku
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
