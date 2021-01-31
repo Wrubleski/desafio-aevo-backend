@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const GetCurrentWeatherService = require("../services/GetCurrentWeatherService");
+const current_controller = require("../controllers/current");
 
-router.post("/", async (req, res) => {
-  const getCurrentWeatherServicenew = new GetCurrentWeatherService(req, res);
-  const weatherData = await getCurrentWeatherServicenew.getData();
-  res.send(weatherData);
-});
+router.post("/", current_controller.current_root_post);
+router.get("/", current_controller.current_root_get);
 
 module.exports = router;
