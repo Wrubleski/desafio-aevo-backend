@@ -3,6 +3,11 @@ const cityModel = require("../models/cityModel");
 class CityRepository {
   async addOrUpdateCity(weatherData) {
     this.weatherData = weatherData;
+
+    if (this.weatherData === null) {
+      throw { error: "weatherData cant be null", at: "CityRepository" };
+    }
+
     this.isError = this.weatherData.success === false ? true : false;
 
     if (!this.isError) {
