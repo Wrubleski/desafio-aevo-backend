@@ -1,4 +1,4 @@
-const axios = require("axios");
+const requestWrapper = require("../../infrastructure/wrappers/RequestWrapper");
 const { API_KEY } = process.env;
 
 class GetCurrentWeatherService {
@@ -8,14 +8,11 @@ class GetCurrentWeatherService {
     this.base_url = "http://api.weatherstack.com/current";
   }
 
-  getData = async () => {
-    const response = await axios({
-      method: "GET",
-      url: this.base_url,
-      params: { access_key: API_KEY, query: this.req.body.city },
-    });
+  async getData() {
+    const params = { access_key: API_KEY, query: this.req.body.city };
+    const response = await requestWrapper.getRequest(this.base_url, params);
     return await response.data;
-  };
+  }
 }
 
 module.exports = GetCurrentWeatherService;

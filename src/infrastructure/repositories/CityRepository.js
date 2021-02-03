@@ -1,4 +1,4 @@
-const CityModel = require("../../models/CityModel");
+const cityModel = require("../models/cityModel");
 
 class CityRepository {
   async addOrUpdateCity(weatherData) {
@@ -8,7 +8,7 @@ class CityRepository {
     if (!this.isError) {
       const { name, country, region } = this.weatherData.location;
 
-      return await CityModel.findOneAndUpdate(
+      return await cityModel.findOneAndUpdate(
         {
           cityName: name,
           countryName: country,
@@ -21,7 +21,7 @@ class CityRepository {
   }
 
   async getCities() {
-    return await CityModel.find().sort({ cityCount: -1 }).limit(6);
+    return await cityModel.find().sort({ cityCount: -1 }).limit(6);
   }
 }
 
