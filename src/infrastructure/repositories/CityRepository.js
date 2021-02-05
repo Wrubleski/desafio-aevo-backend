@@ -5,7 +5,7 @@ class CityRepository {
     this.weatherData = weatherData;
 
     if (this.weatherData === null) {
-      throw { error: "weatherData cant be null", at: "CityRepository" };
+      throw new Error("weatherData cant be null.");
     }
 
     this.isError = this.weatherData.success === false ? true : false;
@@ -20,8 +20,10 @@ class CityRepository {
           regionName: region,
         },
         { $inc: { cityCount: 1 } },
-        { upsert: true, useFindAndModify: false }
+        { upsert: true, useFindAndModify: false, new: true }
       );
+    } else {
+      throw new Error("Succes flag equals false. Request failed.");
     }
   }
 
