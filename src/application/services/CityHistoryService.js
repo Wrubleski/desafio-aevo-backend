@@ -4,7 +4,7 @@ class CityHistoryService {
   async getSearchHistory() {
     const cityRepository = new CityRepository();
     const data = await cityRepository.getCities();
-    return await data.map((city) => {
+    return data.map((city) => {
       return {
         id: city._id,
         city: city.cityName,
