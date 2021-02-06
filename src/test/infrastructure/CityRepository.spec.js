@@ -19,7 +19,7 @@ describe("City Repository Test.", () => {
     dummiedb.startDummieDB();
   });
 
-  describe("Testing addOrUpdateCity method.", () => {
+  describe("Testing addOrUpdateCity method. Make sure your testing DB is up and running.", () => {
     it("Should return created object if valid weather data is sent", async () => {
       const location = {
         name: "Test-1-name",
