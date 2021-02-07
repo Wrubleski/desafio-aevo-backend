@@ -1,9 +1,3 @@
-exports.errorControler = (error, req, res, next) => {
-  res.status(error.status || 500);
-  res.json({
-    error: {
-      ...error,
-      message: error.message,
-    },
-  });
+exports.errorControler = (err, req, res, next) => {
+  res.status(err.status || 500).send({ message: err.message });
 };
