@@ -29,6 +29,8 @@ https://desafio-aevo-front-stataging.herokuapp.com/
 production version:
 https://desafio-aevo-frontend.herokuapp.com/
 
+Be warned that due to Heroku cold start, the first load might feel sluggish.
+
 ## install
 
 Install production dependencies using:
