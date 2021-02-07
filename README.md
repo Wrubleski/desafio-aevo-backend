@@ -33,6 +33,7 @@ Be warned that due to Heroku cold start, the first load might feel sluggish.
 
 ## install
 
+You'll need to have Node.js installed.
 Install production dependencies using:
 
 > npm install --only=prod
