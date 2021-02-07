@@ -2,7 +2,10 @@
 
 require("assert");
 const chai = require("chai");
-const requestWrapper = require("../../infrastructure/wrappers/RequestWrapper");
+const RequestWrapper = require("../../infrastructure/wrappers/RequestWrapper");
+
+const requestWrapper = new RequestWrapper();
+
 chai.use(require("chai-as-promised"));
 
 const { API_KEY } = process.env;

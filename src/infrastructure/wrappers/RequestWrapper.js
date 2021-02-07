@@ -13,4 +13,4 @@ class RequestWrapper {
   }
 }
 
-module.exports = new RequestWrapper();
+module.exports = RequestWrapper;
