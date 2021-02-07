@@ -45,19 +45,6 @@ describe("City Repository Test.", () => {
       });
     });
 
-    it("Should throw an error if weatherData is null", async () => {
-      await expect(cityRepository.addOrUpdateCity(null)).to.be.rejectedWith(
-        Error,
-        "weatherData cant be null."
-      );
-    });
-
-    it("Should throw an error if succes flag received is set to false", async () => {
-      await expect(
-        cityRepository.addOrUpdateCity({ success: false })
-      ).to.be.rejectedWith(Error, "Succes flag equals false. Request failed.");
-    });
-
     it("should increase cityCount by one if city already exists", async () => {
       await cityRepository.addOrUpdateCity({
         location: {

@@ -1,4 +1,4 @@
-const requestWrapper = require("../../infrastructure/wrappers/RequestWrapper");
+const RequestWrapper = require("../../infrastructure/wrappers/RequestWrapper");
 const { API_KEY } = process.env;
 
 class GetCurrentWeatherService {
@@ -9,9 +9,24 @@ class GetCurrentWeatherService {
   }
 
   async getData() {
+    const requestWrapper = new RequestWrapper();
+
     const params = { access_key: API_KEY, query: this.req.body.city };
     const response = await requestWrapper.getRequest(this.base_url, params);
-    return await response.data;
+
+    if (response === null) {
+      throw new Error("weatherData cant be null.");
+    }
+
+    const weatherData = response.data;
+
+    this.isError = weatherData.success === false;
+
+    if (this.isError) {
+      throw new Error("Succes flag equals false. Request failed.");
+    }
+
+    return await weatherData;
   }
 }
 
